@@ -2,3 +2,6 @@
 *~
 .DS_Store
 .idea*
+platforms/browser
+platforms/ios
+platforms/android
