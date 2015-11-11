@@ -4,3 +4,4 @@
 .idea*
 platforms/browser
 platforms/ios
+platforms/android
