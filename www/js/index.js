@@ -16,3 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var app = angular.module('app', []);
+
+app.controller('AppCtrl', function($scope) {
+    $scope.title = 'KawApp';
+    $scope.clear = function() {
+        $scope.panelTitle = '';
+    }
+});
