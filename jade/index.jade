@@ -19,14 +19,14 @@ doctype html
 html(ng-app='app')
   include ./head.jade
   body
-    div(class='container' ng-controller='AppCtrl')
+    div.container(ng-controller='AppCtrl')
       h1(ng-bind='title')
-      div(class='panel panel-default')
-        div(class='panel-heading')
-          h2(class='panel-title' ng-bind='panelTitle')
-          div(class='panel-body')
-            div(class='input-group')
-              input(type='text' class='form-control' ng-model='panelTitle')
-              span(class='input-group-btn')
-                button(type='button' class='btn btn-default' ng-click='clear();') 消す
+      div.panel.panel-default
+        div.panel-heading
+          h2.panel-title(ng-bind='panelTitle')
+          div.panel-body
+            div.input-group
+              input.form-control(type='text' ng-model='panelTitle')
+              span.input-group-btn
+                button.btn.btn-default(type='button' ng-click='clear();') 消す
     include ./script.jade
