@@ -35,14 +35,14 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>{{title}}</title>
+        <title>KawApp</title>
     </head>
     <body>
     <div class="container" ng-controller="AppCtrl">
-        <h1>{{title}}</h1>
+        <h1 ng-bind="title"></h1>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="panel-title">{{panelTitle}}</h2>
+                <h2 class="panel-title" ng-bind="panelTitle"></h2>
             </div>
             <div class="panel-body">
                 <div class="input-group">
