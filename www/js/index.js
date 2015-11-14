@@ -20,7 +20,15 @@ var app = angular.module('app', []);
 
 app.controller('AppCtrl', function($scope) {
     $scope.title = 'KawApp';
+    $scope.word = '';
+    $scope.words = [];
     $scope.clear = function() {
-        $scope.panelTitle = '';
+        $scope.word = '';
+    }
+    $scope.add = function() {
+        if ($scope.word != '') {
+            $scope.words.push($scope.word);
+            $scope.word = '';
+        }
     }
 });
