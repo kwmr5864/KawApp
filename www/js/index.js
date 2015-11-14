@@ -59,7 +59,12 @@ app.controller('MainCtrl', function() {
         return data != null ? JSON.parse(data) : {};
     }
     function updateStorage() {
-        localStorage.setItem(self.title, JSON.stringify(storage));
+        localStorage.setItem(self.title, JSON.stringify(storage, function(key, val) {
+            if (key == '$$hashKey') {
+               return undefined;
+            }
+            return val;
+        }));
         storage = getStorage();
     }
     function getStorageIndex() {
