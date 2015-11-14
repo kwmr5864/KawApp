@@ -48,6 +48,12 @@ app.controller('MainCtrl', function() {
         self.words = words;
         updateStorageWords();
     }
+    self.clear = function() {
+        self.words = [];
+        self.index = 1;
+        storage = {};
+        localStorage.clear();
+    }
     function getStorage() {
         var data = localStorage.getItem(self.title);
         return data != null ? JSON.parse(data) : {};
