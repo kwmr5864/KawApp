@@ -21,9 +21,10 @@ var app = angular.module('app', []);
 app.controller('MainCtrl', function() {
     var self = this;
     self.title = 'KawApp';
-    self.index = 1;
     self.word = '';
-    self.words = [];
+    var storage = getStorage();
+    self.index = getStorageIndex();
+    self.words = getStorageWords();
     self.clear = function() {
         self.word = '';
     }
@@ -31,6 +32,8 @@ app.controller('MainCtrl', function() {
         if (self.word != '') {
             self.words.push({id: self.index, value: self.word});
             self.index++;
+            updateStorageWords();
+            updateStorageIndex();
             self.word = '';
         }
     }
@@ -43,5 +46,30 @@ app.controller('MainCtrl', function() {
             }
         }
         self.words = words;
+        updateStorageWords();
+    }
+    function getStorage() {
+        var data = localStorage.getItem(self.title);
+        return data != null ? JSON.parse(data) : {};
+    }
+    function updateStorage() {
+        localStorage.setItem(self.title, JSON.stringify(storage));
+        storage = getStorage();
+    }
+    function getStorageIndex() {
+        var index = storage['index'];
+        return index != null ? index : 1;
+    }
+    function getStorageWords() {
+        var words = storage['words'];
+        return words != null ? words : [];
+    }
+    function updateStorageIndex() {
+        storage['index'] = self.index;
+        updateStorage();
+    }
+    function updateStorageWords() {
+        storage['words'] = self.words;
+        updateStorage();
     }
 });
