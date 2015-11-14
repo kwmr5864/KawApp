@@ -21,6 +21,7 @@ var app = angular.module('app', []);
 app.controller('MainCtrl', function() {
     var self = this;
     self.title = 'KawApp';
+    self.index = 1;
     self.word = '';
     self.words = [];
     self.clear = function() {
@@ -28,8 +29,19 @@ app.controller('MainCtrl', function() {
     }
     self.add = function() {
         if (self.word != '') {
-            self.words.push(self.word);
+            self.words.push({id: self.index, value: self.word});
+            self.index++;
             self.word = '';
         }
+    }
+    self.remove = function(id) {
+        var words = [];
+        for (var i in self.words) {
+            var word = self.words[i];
+            if (word.id != id) {
+                words.push(word)
+            }
+        }
+        self.words = words;
     }
 });
