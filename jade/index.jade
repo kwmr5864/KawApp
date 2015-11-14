@@ -24,9 +24,9 @@ html(ng-app='app')
       div.panel.panel-default
         div.panel-heading
           h2.panel-title(ng-bind='panelTitle')
-          div.panel-body
-            div.input-group
-              input.form-control(type='text' ng-model='panelTitle')
-              span.input-group-btn
-                button.btn.btn-default(type='button' ng-click='clear();') 消す
+        div.panel-body
+          div.input-group
+            input.form-control(type='text' ng-model='panelTitle')
+            span.input-group-btn
+              button.btn.btn-default(type='button' ng-click='clear();') 消す
     include ./script.jade
