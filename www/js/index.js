@@ -18,17 +18,18 @@
  */
 var app = angular.module('app', []);
 
-app.controller('AppCtrl', function($scope) {
-    $scope.title = 'KawApp';
-    $scope.word = '';
-    $scope.words = [];
-    $scope.clear = function() {
-        $scope.word = '';
+app.controller('MainCtrl', function() {
+    var self = this;
+    self.title = 'KawApp';
+    self.word = '';
+    self.words = [];
+    self.clear = function() {
+        self.word = '';
     }
-    $scope.add = function() {
-        if ($scope.word != '') {
-            $scope.words.push($scope.word);
-            $scope.word = '';
+    self.add = function() {
+        if (self.word != '') {
+            self.words.push(self.word);
+            self.word = '';
         }
     }
 });
