@@ -30,7 +30,7 @@ app.controller('MainCtrl', function() {
     }
     self.add = function() {
         if (self.word != '') {
-            self.words.push({id: self.index, value: self.word});
+            self.words.unshift({id: self.index, value: self.word});
             self.index++;
             updateStorageWords();
             updateStorageIndex();
