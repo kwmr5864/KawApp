@@ -21,23 +21,8 @@ html(ng-app='app')
   body
     div.container(ng-controller='MainCtrl as main')
       h1(ng-bind='main.title')
-      div.panel.panel-default
-        div.panel-heading
-          h2.panel-title 単語を登録してみよう！
-        div.panel-body
-          div.input-group
-            input.form-control(type='text' ng-model='main.word')
-            span.input-group-btn
-              button.btn.btn-default(type='button' ng-click='main.clear();') 消す
-          div.btn-group
-            button.btn.btn-primary(type='button' ng-click='main.add();') 追加する
-            button.btn.btn-default(type='button' ng-click='main.clear();') 全部消す
-          ul.list-group
-            li.list-group-item(ng-repeat="x in main.words") {{ x.value }}
-              span.btn-group
-                button.btn.btn-default(type='button' ng-click='main.remove(x.id);') 消す
-                button.btn.btn-default(type='button' ng-click='main.downIndex(x.id);')
-                  span.glyphicon.glyphicon-circle-arrow-down(aria-hidden='true')
-                button.btn.btn-default(type='button' ng-click='main.upIndex(x.id);')
-                  span.glyphicon.glyphicon-circle-arrow-up(aria-hidden='true')
+      include tabs/nav-tabs.jade
+      div.tab-content
+        include tabs/home.jade
+        div.tab-pane#settings 作成中...
     include ./script.jade

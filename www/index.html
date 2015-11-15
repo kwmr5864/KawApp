@@ -40,29 +40,40 @@ under the License.
   <body>
     <div ng-controller="MainCtrl as main" class="container">
       <h1 ng-bind="main.title"></h1>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2 class="panel-title">単語を登録してみよう！</h2>
-        </div>
-        <div class="panel-body">
-          <div class="input-group">
-            <input type="text" ng-model="main.word" class="form-control"><span class="input-group-btn">
-              <button type="button" ng-click="main.clear();" class="btn btn-default">消す</button></span>
+      <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+        <li><a href="#settings" data-toggle="tab">Settings</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="home" class="tab-pane active">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title">単語を登録してみよう！</h2>
+            </div>
+            <div class="panel-body">
+              <div class="input-group">
+                <input type="text" ng-model="main.word" class="form-control"><span class="input-group-btn">
+                  <button type="button" ng-click="main.clear();" class="btn btn-default">消す</button></span>
+              </div>
+              <div class="btn-group">
+                <button type="button" ng-click="main.add();" class="btn btn-primary">追加する</button>
+                <button type="button" ng-click="main.clear();" class="btn btn-default">全部消す</button>
+              </div>
+              <ul class="list-group">
+                <li ng-repeat="x in main.words" class="list-group-item">{{ x.value }}<span class="btn-group">
+                    <button type="button" ng-click="main.remove(x.id);" class="btn btn-default">消す</button>
+                    <button type="button" ng-click="main.downIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                    <button type="button" ng-click="main.upIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-up"></span></button></span></li>
+              </ul>
+            </div>
           </div>
-          <div class="btn-group">
-            <button type="button" ng-click="main.add();" class="btn btn-primary">追加する</button>
-            <button type="button" ng-click="main.clear();" class="btn btn-default">全部消す</button>
-          </div>
-          <ul class="list-group">
-            <li ng-repeat="x in main.words" class="list-group-item">{{ x.value }}<span class="btn-group">
-                <button type="button" ng-click="main.remove(x.id);" class="btn btn-default">消す</button>
-                <button type="button" ng-click="main.downIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-down"></span></button>
-                <button type="button" ng-click="main.upIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-up"></span></button></span></li>
-          </ul>
         </div>
+        <div id="settings" class="tab-pane">作成中...</div>
       </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/angular.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
