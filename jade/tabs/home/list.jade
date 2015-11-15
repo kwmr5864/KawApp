@@ -1,0 +1,8 @@
+ul.list-group
+  li.list-group-item(ng-repeat="x in main.words") {{ x.value }}
+    span.btn-group
+      button.btn.btn-default(type='button' ng-click='main.remove(x.id);') 消す
+      button.btn.btn-default(type='button' ng-click='main.downIndex(x.id);')
+        span.glyphicon.glyphicon-circle-arrow-down(aria-hidden='true')
+      button.btn.btn-default(type='button' ng-click='main.upIndex(x.id);')
+        span.glyphicon.glyphicon-circle-arrow-up(aria-hidden='true')
