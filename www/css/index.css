@@ -16,6 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ul.nav.nav-tabs {
+    margin: 0 0 20px 0;
+}
 div.btn-group {
     margin: 10px 0 10px 0;
 }
