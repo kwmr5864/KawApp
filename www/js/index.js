@@ -54,6 +54,28 @@ app.controller('MainCtrl', function() {
         storage = {};
         localStorage.clear();
     }
+    self.upIndex = function(id) {
+        for (var i in self.words) {
+            var word = self.words[i];
+            if (word.id == id && 0 < i) {
+                self.words[i] = self.words[i - 1];
+                self.words[i - 1] = word;
+                updateStorageWords();
+                break;
+            }
+        }
+    }
+    self.downIndex = function(id) {
+        for (var i in self.words) {
+            var word = self.words[i];
+            if (word.id == id && i < self.words.length - 1) {
+                self.words[i] = self.words[i - 0 + 1];
+                self.words[i - 0 + 1] = word;
+                updateStorageWords();
+                break;
+            }
+        }
+    }
     function getStorage() {
         var data = localStorage.getItem(self.title);
         return data != null ? JSON.parse(data) : {};

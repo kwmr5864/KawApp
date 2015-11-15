@@ -16,6 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-.btn-group {
+div.btn-group {
     margin: 10px 0 10px 0;
+}
+.list-group-item .btn-group {
+    margin: 0 0 0 10px;
 }
