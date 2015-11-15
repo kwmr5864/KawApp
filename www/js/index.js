@@ -20,6 +20,12 @@ var app = angular.module('app', []);
 
 app.controller('MainCtrl', function() {
     var self = this;
+    self.categoryOptions = [
+        {label: 'カテゴリ1', value: 1},
+        {label: 'カテゴリ2', value: 2},
+        {label: 'その他', value: 3}
+    ];
+    self.category = 2;
     self.word = '';
     var storage = getStorage();
     self.index = getStorageIndex();

@@ -5,10 +5,7 @@ div.tab-pane.active#home
     div.panel-body
       div.input-group
         span.input-group-btn
-          select.btn.btn-default
-            option カテゴリ1
-            option カテゴリ2
-            option その他
+          select.btn.btn-default(ng-model='main.category' ng-options='x.value as x.label for x in main.categoryOptions')
         input.form-control(type='text' ng-model='main.word')
       div.btn-group
         button.btn.btn-primary(type='button' ng-click='main.add();') 追加する
