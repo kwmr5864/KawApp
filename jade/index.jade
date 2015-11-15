@@ -21,8 +21,8 @@ html(ng-app='app')
   body
     div.container(ng-controller='MainCtrl as main')
       h1(ng-bind='main.title')
-      include ./nav-tabs.jade
+      include tabs/nav-tabs.jade
       div.tab-content
-        include ./home.jade
+        include tabs/home.jade
         div.tab-pane#settings 作成中...
     include ./script.jade
