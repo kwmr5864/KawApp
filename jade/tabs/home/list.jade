@@ -1,5 +1,6 @@
 ul.list-group
-  li.list-group-item(ng-repeat="x in main.words") {{ x.value }}
+  li.list-group-item(ng-repeat='x in main.words')
+    span(ng-bind='x.value')
     span.btn-group
       button.btn.btn-default(type='button' ng-click='main.remove(x.id);') 消す
       button.btn.btn-default(type='button' ng-click='main.downIndex(x.id);')

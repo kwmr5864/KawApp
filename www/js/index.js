@@ -20,7 +20,6 @@ var app = angular.module('app', []);
 
 app.controller('MainCtrl', function() {
     var self = this;
-    self.title = 'KawApp';
     self.word = '';
     var storage = getStorage();
     self.index = getStorageIndex();
@@ -77,11 +76,11 @@ app.controller('MainCtrl', function() {
         }
     }
     function getStorage() {
-        var data = localStorage.getItem(self.title);
+        var data = localStorage.getItem('KawApp');
         return data != null ? JSON.parse(data) : {};
     }
     function updateStorage() {
-        localStorage.setItem(self.title, JSON.stringify(storage, function(key, val) {
+        localStorage.setItem('KawApp', JSON.stringify(storage, function(key, val) {
             if (key == '$$hashKey') {
                return undefined;
             }
