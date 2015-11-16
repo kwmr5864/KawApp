@@ -52,7 +52,7 @@ under the License.
             </div>
             <div class="panel-body">
               <div class="input-group"><span class="input-group-btn">
-                  <select ng-model="main.category" ng-options="x.value as x.label for x in main.categoryOptions" class="btn btn-default"></select></span>
+                  <select ng-model="main.selectedCategory" ng-options="x.value as x.label for x in main.categories" class="btn btn-default"></select></span>
                 <input type="text" ng-model="main.word" class="form-control">
               </div>
               <div class="btn-group">
@@ -68,7 +68,23 @@ under the License.
             </div>
           </div>
         </div>
-        <div id="settings" class="tab-pane">作成中...</div>
+        <div id="settings" class="tab-pane">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">カテゴリ登録</h2>
+            </div>
+            <div class="panel-body">
+              <div class="input-group"><span class="input-group-btn">
+                  <button type="button" ng-click="main.addCategory();" class="btn btn-primary">追加する</button></span>
+                <input type="text" ng-model="main.category" class="form-control">
+              </div>
+              <ul class="list-group">
+                <li ng-repeat="x in main.categories" class="list-group-item"><span ng-bind="x.label"></span><span class="btn-group">
+                    <button type="button" ng-click="main.removeCategory(x.value);" class="btn btn-default">消す</button></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>

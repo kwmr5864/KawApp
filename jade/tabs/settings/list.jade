@@ -1,0 +1,5 @@
+ul.list-group
+  li.list-group-item(ng-repeat='x in main.categories')
+    span(ng-bind='x.label')
+    span.btn-group
+      button.btn.btn-default(type='button' ng-click='main.removeCategory(x.value);') 消す
