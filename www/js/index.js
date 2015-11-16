@@ -20,25 +20,22 @@ var app = angular.module('app', []);
 
 app.controller('MainCtrl', function() {
     var self = this;
-    self.categoryOptions = [
-        {label: 'カテゴリ1', value: 1},
-        {label: 'カテゴリ2', value: 2},
-        {label: 'その他', value: 3}
-    ];
-    self.category = 2;
+    self.selectedCategory = 1;
     self.word = '';
     var storage = getStorage();
     self.index = getStorageIndex();
     self.words = getStorageWords();
+    self.categoryIndex = getStorageCategoryIndex();
+    self.categories = getStorageCategories();
     self.clear = function() {
         self.word = '';
     }
     self.add = function() {
         if (self.word != '') {
-            var category = self.categoryOptions[self.categoryOptions.length - 1];
-            for (var i in self.categoryOptions) {
-                var option = self.categoryOptions[i];
-                if (option.value == self.category) {
+            var category = self.categories[self.categories.length - 1];
+            for (var i in self.categories) {
+                var option = self.categories[i];
+                if (option.value == self.selectedCategory) {
                     category = option;
                     break;
                 }
@@ -94,6 +91,27 @@ app.controller('MainCtrl', function() {
             }
         }
     }
+    self.addCategory = function() {
+        if (self.category != '') {
+            var category = {label: self.category, value: self.categoryIndex};
+            self.categories.unshift(category);
+            self.categoryIndex++;
+            updateStorageCategories();
+            updateStorageCategoryIndex();
+            self.category = '';
+        }
+    }
+    self.removeCategory = function(value) {
+        var categories = [];
+        for (var i in self.categories) {
+            var category = self.categories[i];
+            if (category.value != value) {
+                categories.push(category)
+            }
+        }
+        self.categories = categories;
+        updateStorageCategories();
+    }
     function getStorage() {
         var data = localStorage.getItem('KawApp');
         return data != null ? JSON.parse(data) : {};
@@ -115,12 +133,28 @@ app.controller('MainCtrl', function() {
         var words = storage['words'];
         return words != null ? words : [];
     }
+    function getStorageCategoryIndex() {
+        var categoryIndex = storage['categoryIndex'];
+        return categoryIndex != null ? categoryIndex : 2;
+    }
+    function getStorageCategories() {
+        var categories = storage['categories'];
+        return categories != null ? categories : [{label: 'その他', value: 1}];
+    }
     function updateStorageIndex() {
         storage['index'] = self.index;
         updateStorage();
     }
     function updateStorageWords() {
         storage['words'] = self.words;
+        updateStorage();
+    }
+    function updateStorageCategoryIndex() {
+        storage['categoryIndex'] = self.categoryIndex;
+        updateStorage();
+    }
+    function updateStorageCategories() {
+        storage['categories'] = self.categories;
         updateStorage();
     }
 });
