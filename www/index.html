@@ -39,8 +39,8 @@ under the License.
   </head>
   <body>
     <div ng-controller="MainCtrl as main" class="container">
-      <h1 ng-bind="main.title"></h1>
-      <ul class="nav nav-tabs nav-justified">
+      <h1>KawApp</h1>
+      <ul class="nav nav-tabs">
         <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
         <li><a href="#settings" data-toggle="tab">Settings</a></li>
       </ul>
@@ -51,16 +51,16 @@ under the License.
               <h2 class="panel-title">単語を登録してみよう！</h2>
             </div>
             <div class="panel-body">
-              <div class="input-group">
-                <input type="text" ng-model="main.word" class="form-control"><span class="input-group-btn">
-                  <button type="button" ng-click="main.clear();" class="btn btn-default">消す</button></span>
+              <div class="input-group"><span class="input-group-btn">
+                  <select ng-model="main.category" ng-options="x.value as x.label for x in main.categoryOptions" class="btn btn-default"></select></span>
+                <input type="text" ng-model="main.word" class="form-control">
               </div>
               <div class="btn-group">
                 <button type="button" ng-click="main.add();" class="btn btn-primary">追加する</button>
                 <button type="button" ng-click="main.clear();" class="btn btn-default">全部消す</button>
               </div>
               <ul class="list-group">
-                <li ng-repeat="x in main.words" class="list-group-item">{{ x.value }}<span class="btn-group">
+                <li ng-repeat="x in main.words" class="list-group-item"><span ng-bind="x.value"></span><span class="small"><span>（</span><span ng-bind="x.category.label"></span><span>）</span></span><span class="btn-group">
                     <button type="button" ng-click="main.remove(x.id);" class="btn btn-default">消す</button>
                     <button type="button" ng-click="main.downIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-down"></span></button>
                     <button type="button" ng-click="main.upIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-up"></span></button></span></li>
