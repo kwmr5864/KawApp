@@ -35,7 +35,20 @@ app.controller('MainCtrl', function() {
     }
     self.add = function() {
         if (self.word != '') {
-            self.words.unshift({id: self.index, value: self.word});
+            var category = self.categoryOptions[self.categoryOptions.length - 1];
+            for (var i in self.categoryOptions) {
+                var option = self.categoryOptions[i];
+                if (option.value == self.category) {
+                    category = option;
+                    break;
+                }
+            }
+            var word = {
+                id: self.index,
+                value: self.word,
+                category: category
+            }
+            self.words.unshift(word);
             self.index++;
             updateStorageWords();
             updateStorageIndex();

@@ -60,7 +60,7 @@ under the License.
                 <button type="button" ng-click="main.clear();" class="btn btn-default">全部消す</button>
               </div>
               <ul class="list-group">
-                <li ng-repeat="x in main.words" class="list-group-item"><span ng-bind="x.value"></span><span class="btn-group">
+                <li ng-repeat="x in main.words" class="list-group-item"><span ng-bind="x.value"></span><span class="small"><span>（</span><span ng-bind="x.category.label"></span><span>）</span></span><span class="btn-group">
                     <button type="button" ng-click="main.remove(x.id);" class="btn btn-default">消す</button>
                     <button type="button" ng-click="main.downIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-down"></span></button>
                     <button type="button" ng-click="main.upIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-up"></span></button></span></li>
