@@ -4,9 +4,9 @@ div.tab-pane.active#home
       h2.panel-title 単語を登録してみよう！
     div.panel-body
       div.input-group
-        input.form-control(type='text' ng-model='main.word')
         span.input-group-btn
-          button.btn.btn-default(type='button' ng-click='main.clear();') 消す
+          select.btn.btn-default(ng-model='main.category' ng-options='x.value as x.label for x in main.categoryOptions')
+        input.form-control(type='text' ng-model='main.word')
       div.btn-group
         button.btn.btn-primary(type='button' ng-click='main.add();') 追加する
         button.btn.btn-default(type='button' ng-click='main.clear();') 全部消す

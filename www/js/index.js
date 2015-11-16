@@ -20,7 +20,12 @@ var app = angular.module('app', []);
 
 app.controller('MainCtrl', function() {
     var self = this;
-    self.title = 'KawApp';
+    self.categoryOptions = [
+        {label: 'カテゴリ1', value: 1},
+        {label: 'カテゴリ2', value: 2},
+        {label: 'その他', value: 3}
+    ];
+    self.category = 2;
     self.word = '';
     var storage = getStorage();
     self.index = getStorageIndex();
@@ -30,7 +35,20 @@ app.controller('MainCtrl', function() {
     }
     self.add = function() {
         if (self.word != '') {
-            self.words.unshift({id: self.index, value: self.word});
+            var category = self.categoryOptions[self.categoryOptions.length - 1];
+            for (var i in self.categoryOptions) {
+                var option = self.categoryOptions[i];
+                if (option.value == self.category) {
+                    category = option;
+                    break;
+                }
+            }
+            var word = {
+                id: self.index,
+                value: self.word,
+                category: category
+            }
+            self.words.unshift(word);
             self.index++;
             updateStorageWords();
             updateStorageIndex();
@@ -77,11 +95,11 @@ app.controller('MainCtrl', function() {
         }
     }
     function getStorage() {
-        var data = localStorage.getItem(self.title);
+        var data = localStorage.getItem('KawApp');
         return data != null ? JSON.parse(data) : {};
     }
     function updateStorage() {
-        localStorage.setItem(self.title, JSON.stringify(storage, function(key, val) {
+        localStorage.setItem('KawApp', JSON.stringify(storage, function(key, val) {
             if (key == '$$hashKey') {
                return undefined;
             }
