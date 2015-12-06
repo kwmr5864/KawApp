@@ -10,4 +10,10 @@
       .btn-group
         button.btn.btn-primary(type='button' ng-click='main.add();') 追加する
         button.btn.btn-default(type='button' ng-click='main.clear();') 全部消す
-      include home/list.jade
+  .panel.panel-default
+    .panel-heading
+      h2.panel-title 登録リスト
+    .panel-body
+      span.input-group-btn
+        select.btn.btn-default(ng-model='main.displayCategory' ng-change='main.changeCategory()' ng-options='x.value as x.label for x in main.categories')
+    include home/list.jade
