@@ -1,5 +1,5 @@
 ul.list-group
-  li.list-group-item(ng-repeat='x in main.words')
+  li.list-group-item(ng-repeat='x in main.words | filter: {"visible": true}')
     span(ng-bind='x.value')
     span.small
       span （
