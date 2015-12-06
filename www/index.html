@@ -59,13 +59,20 @@ under the License.
                 <button type="button" ng-click="main.add();" class="btn btn-primary">追加する</button>
                 <button type="button" ng-click="main.clear();" class="btn btn-default">全部消す</button>
               </div>
-              <ul class="list-group">
-                <li ng-repeat="x in main.words" class="list-group-item"><span ng-bind="x.value"></span><span class="small"><span>（</span><span ng-bind="x.category.label"></span><span>）</span></span><span class="btn-group">
-                    <button type="button" ng-click="main.remove(x.id);" class="btn btn-default">消す</button>
-                    <button type="button" ng-click="main.downIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-down"></span></button>
-                    <button type="button" ng-click="main.upIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-up"></span></button></span></li>
-              </ul>
             </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title">登録リスト</h2>
+            </div>
+            <div class="panel-body"><span class="input-group-btn">
+                <select ng-model="main.displayCategory" ng-change="main.changeCategory()" ng-options="x.value as x.label for x in main.categories" class="btn btn-default"></select></span></div>
+            <ul class="list-group">
+              <li ng-repeat="x in main.words | filter: {&quot;visible&quot;: true}" class="list-group-item"><span ng-bind="x.value"></span><span class="small"><span>（</span><span ng-bind="x.category.label"></span><span>）</span></span><span class="btn-group">
+                  <button type="button" ng-click="main.remove(x.id);" class="btn btn-default">消す</button>
+                  <button type="button" ng-click="main.downIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                  <button type="button" ng-click="main.upIndex(x.id);" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-up"></span></button></span></li>
+            </ul>
           </div>
         </div>
         <div id="settings" class="tab-pane">

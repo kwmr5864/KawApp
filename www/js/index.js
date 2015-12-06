@@ -21,6 +21,7 @@ var app = angular.module('app', []);
 app.controller('MainCtrl', function() {
     var self = this;
     self.selectedCategory = 1;
+    self.displayCategory = 1;
     self.word = '';
     var storage = getStorage();
     self.index = getStorageIndex();
@@ -43,7 +44,8 @@ app.controller('MainCtrl', function() {
             var word = {
                 id: self.index,
                 value: self.word,
-                category: category
+                category: category,
+                visible: true
             }
             self.words.unshift(word);
             self.index++;
@@ -62,6 +64,12 @@ app.controller('MainCtrl', function() {
         }
         self.words = words;
         updateStorageWords();
+    }
+    self.changeCategory = function() {
+        for (var i in self.words) {
+            var word = self.words[i];
+            self.words[i].visible = word.category.value == self.displayCategory;
+        }
     }
     self.clear = function() {
         self.words = [];
